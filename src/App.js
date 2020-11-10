@@ -14,7 +14,10 @@ const App = () => {
       <BrowserRouter>
 
       <Switch>
-        <Route path="/" 
+        <Route exact path="/" render={(props) => <Twoots {...props} />} />
+        <Route path="/create" render={(props) => <AddTwoot {...props} />} />
+        <Route path="/edit/:id" render={(props) => <EditTwoot {...props} />} />
+        <Route path="/read/:id" render={(props) => <Twoot {...props} />} />
       </Switch>
       
       </BrowserRouter>
