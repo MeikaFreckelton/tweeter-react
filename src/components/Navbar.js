@@ -5,7 +5,8 @@ import {Link} from 'react-router-dom'
 const Navbar = () => {
     const divStyle={
         display: 'flex',
-        paddingLeft: "5%"
+        paddingLeft: "5%",
+        // backgroundColor: "#f5f5f5"
     }
     const linkStyle = {
         fontSize: '1.5em',

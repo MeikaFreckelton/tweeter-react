@@ -1,11 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 // Display the one Twoot  - Remember to allow the passing of an id here
 
 
 const Twoot = ({history, twoot, deleteTwoot, showControls}) => {
-
-    
+    const lightHeartStyles = {
+        fontSize: "1rem"
+    }
+    const darkHeartStyles = {
+        fontSize: "1.35rem"
+    }
+    const [likes, setLikes] = useState(0)
+    const [heart, setHeart] = useState("♡")
+    const [heartStyles, setHeartStyles] = useState(lightHeartStyles)
+    // ♡
 
     if (!twoot){
         return null
@@ -18,11 +26,11 @@ const Twoot = ({history, twoot, deleteTwoot, showControls}) => {
         }
 
         const divStyles={
-            padding: '3%',
+            padding: '2%',
             backgroundColor: "#f5f5f5",
-            margin: '3%',
+            margin: '2%',
             fontFamily: 'PT Sans',
-            width: "50vw"
+            width: "30vw"
 
 
         }
@@ -45,6 +53,41 @@ const Twoot = ({history, twoot, deleteTwoot, showControls}) => {
             e.preventDefault()
             history.push(`/twoot/edit/${twoot._id}`)
         }
+        
+
+        const handleLikes = (e) => {
+            e.preventDefault()
+            if (likes === 0){
+                setLikes(likes + 1)
+                setHeart("♥")
+                setHeartStyles(darkHeartStyles)
+            } else {
+                setLikes(likes - 1)
+                setHeart("♡")
+                setHeartStyles(lightHeartStyles)
+
+            }
+            
+
+        }
+
+        const likesStyles = {
+            margin: "0",
+            paddingRight: "2%",
+            fontSize: "1.5rem"
+            
+
+
+        }
+        const divLikesStyles = {
+            display: "flex"
+
+        }
+
+        
+        
+
+        
 
         
 
@@ -58,6 +101,11 @@ const Twoot = ({history, twoot, deleteTwoot, showControls}) => {
                     <h3 style={categoryStyles}>{category}</h3>
                     <h5>{modified_date.toLocaleString()}</h5>
                     <p>{content}</p>
+                    <div style={divLikesStyles}>
+                        <p style={likesStyles}>{likes}</p>
+                        <button onClick={handleLikes} style={heartStyles}>{heart}</button>
+                    </div>
+                    
                     {showControls && <button onClick={handleDelete}>delete</button>}
                     {showControls && <button onClick={handleEdit}>edit</button>}
                 </div>

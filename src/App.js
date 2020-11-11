@@ -45,9 +45,17 @@ const App = () => {
     paddingLeft: '5%'
   }
 
+  // const greyBg = {
+  //   backgroundColor: "#f5f5f5",
+  //   top: "0"
+  // }
+
   return (
     <div >
-      <h1 style={heading}>Tweeter</h1>
+      {/* <div style={greyBg}> */}
+        <h1 style={heading}>Tweeter</h1>
+      {/* </div> */}
+      
       <BrowserRouter>
       <Navbar />
 
